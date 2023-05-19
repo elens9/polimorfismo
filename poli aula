@@ -1,0 +1,202 @@
+package polimorfismo;
+
+
+public class Polimorfismo {
+
+    public static void main(String[] args) {
+      Pessoa p1 = new Pessoa();
+      p1.realizarPagamento();
+      
+      PessoaFisica pf1 = new PessoaFisica();
+      pf1.realizarPagamento();
+      
+      PessoaJuridica pj1 = new PessoaJuridica();
+      pj1.realizarPagamento();
+    }
+    
+}
+///////////////////////////////////////////////////
+package polimorfismo;
+import java.util.ArrayList;
+//saldo=saldo+valor
+public class Pessoa {
+   private String nome, endereco;
+   private ArrayList<Pessoa> contatos = new ArrayList();
+   private double valor, saldo;
+
+    public Pessoa(String nome, String endereco, double saldo, double valor) {
+        this.setNome("");
+        this.setEndereco("");
+        this.setSaldo(2256);
+ 
+      
+    }
+  
+  
+   
+   public Pessoa (){
+       
+   }
+  
+   
+   
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public ArrayList<Pessoa> getContatos() {
+        return contatos;
+    }
+
+    public void setContatos(ArrayList<Pessoa> contatos) {
+        this.contatos = contatos;
+    }
+  
+   
+  
+    public void realizarPagamento (double valor){
+        valor = 1200;
+        this.setSaldo(this.getSaldo() + valor);
+        System.out.println("Saldo:" + this.getSaldo());
+     
+    }
+
+    void realizarPagamento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+    
+    
+}
+/////////////////////////////////////////////////////////////////////////////////////
+package polimorfismo;
+
+//saldo=saldo+valor*0.9;
+public class PessoaFisica extends Pessoa {
+    private int cpf;
+    private double imposto;
+
+    public PessoaFisica(int cpf, double imposto, String nome, String endereco, double saldo, double valor) {
+        super(nome, endereco, saldo,valor);
+        this.cpf = cpf;
+        this.setImposto(0.9);
+    }
+
+    public PessoaFisica(){
+        
+    }
+    
+   
+    public int getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
+
+    public double getImposto() {
+        return imposto;
+    }
+
+    public void setImposto(double imposto) {
+        this.imposto = imposto;
+    }
+    
+      public void realizarPagamento(double valor){
+       this.setSaldo(this.getSaldo() + this.getSaldo()* this.getImposto());
+          System.out.println("Saldo: " + this.getSaldo());
+    }
+
+}
+/////////////////////////////////////////////////////////////////
+package polimorfismo;
+
+//saldo =saldo + valor*0.8;
+public class PessoaJuridica extends Pessoa{
+    private int cnpj;
+    private double imposto;
+    private String nomeFant, razaoSocial;
+
+    public PessoaJuridica(int cnpj, double imposto, String nomeFant, String razaoSocial, String nome, String endereco, double saldo, double valor) {
+        super(nome, endereco, saldo, valor);
+        this.setCnpj(1993564892);
+        this.setImposto(0.8);
+        this.setNomeFant("");
+        this.setRazaoSocial("");
+    }
+
+    public PessoaJuridica (){
+        
+    }
+    
+    
+    
+    
+    public int getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(int cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public double getImposto() {
+        return imposto;
+    }
+
+    public void setImposto(double imposto) {
+        this.imposto = imposto;
+    }
+
+    public String getNomeFant() {
+        return nomeFant;
+    }
+
+    public void setNomeFant(String nomeFant) {
+        this.nomeFant = nomeFant;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+    
+    
+    public void realizarPagamento(double valor){
+        valor = 1200;
+        this.setSaldo(this.getSaldo() + valor * this.getImposto());
+        System.out.println("Saldo: " + this.getSaldo());
+    }
+
+
+  
+    
+}
+
+
+
